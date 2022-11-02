@@ -1,3 +1,4 @@
+from unittest import result
 import mysql.connector
 
 mydb = mysql.connector.connect(host = 'localhost',user = 'root' ,password = '',database = 'studentdb')
@@ -16,7 +17,7 @@ while True:
     if choice==1:
         print("student entry selected")
         name = input("enter the name :")
-        rollno =input("Enter thr ")
+        rollno =input("Enter the roll no :  ")
         adno = input("Enter the admission number : ")
         college =input("Enter the collegename : ")
         sql = 'INSERT INTO `students`(`name`, `rollnumber`, `admno`, `college`) VALUES (%s,%s,%s,%s)'
@@ -25,6 +26,11 @@ while True:
         mydb.commit()
     elif choice==2:
         print("view all student selected ")
+        sql = 'SELECT * FROM `students`'
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
     elif choice==3:
         print("search the  student  ")
     elif choice==4:
