@@ -78,7 +78,13 @@ while True:
         result=mycursor.fetchall()
         mydb.commit()
         print("Marks inserted Successfully ")
-
+    elif choice==7:
+        print("view all mark")
+        sql = "SELECT s.`name`, s.`rollnumber`, s.`admno`, s.`college`,m.physics_mark,m.chemistry_mark,m.maths_mark FROM `students` s JOIN  marks m ON s.id = m.student_id   "
+        mycursor.execute(sql)
+        result =mycursor.fetchall()
+        for i in result:
+            print(i)
 
     elif choice==10:
         break
