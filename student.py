@@ -1,4 +1,3 @@
-from unittest import result
 import mysql.connector
 
 mydb = mysql.connector.connect(host = 'localhost',user = 'root' ,password = '',database = 'studentdb')
@@ -42,6 +41,11 @@ while True:
         print("update the student  ")
     elif choice==5:
         print("delete the student  ")
+        admino = input("Enter the admission number to be deleted : ")
+        sql = 'DELETE FROM `students` WHERE admno = ' +admino
+        mycursor.execute(sql)
+        mydb.commit()
+        print(f"{admino} Deleted successfully. ")
     elif choice==6:
         break
         
