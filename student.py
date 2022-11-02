@@ -114,6 +114,21 @@ while True:
         mycursor.execute(sql)
         result = mycursor.fetchall()
         print(result)
+    elif(choice == 10):
+        print("Individual marks")
+        adm = input("Enter the student admission number: ")
+        sql = 'SELECT `id` FROM `students` WHERE `admno` =  '+adm
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        id = 0
+        for i in result:
+            id = str(i[0])
+        sql = "SELECT s.`name`, s.`rollnumber`, s.`admno`, s.`college`,m.physics_mark,m.chemistry_mark,m.maths_mark FROM `students` s JOIN marks m ON s.id = m.student_id WHERE s.id = "+id
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
+
 
 
 
@@ -122,6 +137,6 @@ while True:
 
 
 
-    elif choice==10:
+    elif choice==11:
         break
         
