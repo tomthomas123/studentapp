@@ -13,7 +13,8 @@ while True:
              6. insert marks
              7. view all marks
              8. subject wise mark
-             9. individual mark
+             9. subject wise average mark
+             10. individual mark
              10. exit   
                  """)
     choice =int(input("Enter your option : "))
@@ -85,6 +86,25 @@ while True:
         result =mycursor.fetchall()
         for i in result:
             print(i)
+    elif choice==8:
+        print("subjectwise mark")
+        subname= input("Enter the subject : ")
+        if(subname=='physics'):
+            sql = "SELECT `physics_mark` FROM `marks` "
+        if(subname=='chemistry'):
+            sql = "SELECT  `chemistry_mark` FROM `marks`"
+        if(subname=='maths'):
+            sql = "SELECT `maths_mark` FROM `marks` "
+        mycursor.execute(sql)
+        result=mycursor.fetchall()
+        for i in result:
+            print(i)
+    
+
+
+    
+
+
 
     elif choice==10:
         break
